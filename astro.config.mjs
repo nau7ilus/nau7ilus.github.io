@@ -1,6 +1,5 @@
 import { defineConfig } from 'astro/config';
 import mdx from '@astrojs/mdx';
-import sitemap from '@astrojs/sitemap';
 import rehypeSlug from 'rehype-slug';
 import rehypeAutolinkHeadings from 'rehype-autolink-headings';
 
@@ -9,7 +8,7 @@ export default defineConfig({
   site: 'https://fzielinski.dev',
   base: '/',
   trailingSlash: 'never',
-  integrations: [mdx(), sitemap()],
+  integrations: [mdx()],
   markdown: {
     shikiConfig: {
       theme: 'catppuccin-mocha',

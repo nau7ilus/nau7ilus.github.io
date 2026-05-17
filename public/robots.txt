@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://fzielinski.dev/sitemap-index.xml
+Sitemap: https://fzielinski.dev/sitemap.xml
