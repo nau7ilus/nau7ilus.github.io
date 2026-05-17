@@ -10,26 +10,31 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, "");
 const posts = (await getCollection("posts", ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 5);
-
-// stylized nautilus shell — passt zum handle nau7ilus
-const avatar = String.raw`
-       _____
-     .'     '.
-    /  ___    \
-   |  / _ \    |
-   |  | o |    |
-   |  \ _ /    |
-    \  '-'    /
-     '.____.'
-`;
 ---
 
 <Base>
   <AsciiBanner />
 
-  <p style="margin-top:2rem">
-    <Prompt path="~" command="ls posts/ | head -5" />
+  <h1 class="sr-only">
+    Filip Zieliński — Cybersecurity Notebook &amp; CTF Writeups
+  </h1>
+
+  <p style="margin-top:1.5rem">
+    <strong>nau7ilus</strong> is the personal cybersecurity notebook of
+    <strong>Filip Zieliński</strong>. I publish detailed CTF writeups,
+    bug-bounty notes and side-project logs.
   </p>
+
+  <p>
+    See the <a href={`${base}/projects`}>projects</a> page for longer-running tooling
+    and the <a href={`${base}/cv`}>cv</a> for a quick professional summary, or grab
+    the <a href={`${base}/rss.xml`}>RSS feed</a>
+    to follow new writeups.
+  </p>
+
+  <h2 class="terminal-heading">
+    <Prompt path="~" command="ls posts/ | head -5" />
+  </h2>
 
   {
     posts.length === 0 ? (
@@ -60,9 +65,9 @@ const avatar = String.raw`
     &middot; <a href={`${base}/cv`}>cv</a>
   </p>
 
-  <p style="margin-top:2rem">
+  <h2 class="terminal-heading">
     <Prompt path="~" command="cat contact" cursor />
-  </p>
+  </h2>
   <ul class="muted" style="list-style: none; padding-left: 0">
     <li>
       github&nbsp;&nbsp;: <a href="https://github.com/nau7ilus"

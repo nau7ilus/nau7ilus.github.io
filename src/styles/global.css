@@ -562,6 +562,27 @@ h1 .badge-lesenswert {
   font-size: 0.85rem;
 }
 
+/* visually hidden, still read by screen readers + indexed by crawlers */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* heading that visually renders as a terminal prompt line */
+h2.terminal-heading {
+  font-size: 1rem;
+  font-weight: 400;
+  color: inherit;
+  margin: 2rem 0 0.25rem;
+}
+
 /* misc */
 .muted {
   color: var(--subtext0);
