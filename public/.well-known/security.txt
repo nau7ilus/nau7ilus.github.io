@@ -1,0 +1,5 @@
+Contact: mailto:filip@fzielinski.dev
+Encryption: https://fzielinski.dev/pgp.txt
+Preferred-Languages: de, en
+Canonical: https://fzielinski.dev/.well-known/security.txt
+Expires: 2027-12-31T23:59:59Z

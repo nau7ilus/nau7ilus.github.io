@@ -1,0 +1,560 @@
+@import '@fontsource/jetbrains-mono/400.css';
+@import '@fontsource/jetbrains-mono/700.css';
+
+/* Catppuccin Mocha, + contrast
+   Base palette https://catppuccin.com/palette */
+:root {
+  --base: #1e1e2e;
+  --mantle: #14141f;
+  /* was #181825 — darker code/nav bg */
+  --crust: #0a0a12;
+  /* was #11111b — used for scrollbar track */
+  --surface0: #3b3d52;
+  /* was #313244 — code-block border */
+  --surface1: #585b70;
+  /* was #45475a — dashed separators */
+  --surface2: #6c7086;
+  /* was #585b70 — link underlines, tag borders */
+  --overlay0: #7f849c;
+  /* was #6c7086 */
+  --text: #e4e8f7;
+  /* was #cdd6f4 — brighter body text */
+  --subtext1: #c8d0e8;
+  /* was #bac2de */
+  --subtext0: #b8c0d8;
+  /* was #a6adc8 */
+  --rosewater: #f5e0dc;
+  --pink: #f5c2e7;
+  --mauve: #d4b5ff;
+  /* was #cba6f7 */
+  --red: #ff9eb8;
+  /* was #f38ba8 */
+  --peach: #ffb380;
+  /* was #fab387 */
+  --yellow: #ffd966;
+  /* was #f9e2af */
+  --green: #b8eda8;
+  /* was #a6e3a1 */
+  --teal: #94e2d5;
+  --sky: #89dceb;
+  --blue: #a4c4ff;
+  /* was #89b4fa */
+  --lavender: #b4befe;
+
+  --content-width: 78ch;
+  --pad-x: clamp(1rem, 4vw, 2rem);
+}
+
+@media (prefers-color-scheme: light) {
+
+  /* Catppuccin Latte — contrast-tuned */
+  :root.theme-auto {
+    --base: #f5f6f9;
+    /* was #eff1f5 — slightly brighter */
+    --mantle: #e4e7ee;
+    /* was #e6e9ef */
+    --crust: #d2d6e0;
+    /* was #dce0e8 */
+    --surface0: #b8bccb;
+    /* was #ccd0da — more visible code-block border */
+    --surface1: #9ca0b0;
+    /* was #bcc0cc — visible dashed separators */
+    --surface2: #7c8090;
+    /* was #acb0be */
+    --overlay0: #6c7080;
+    /* was #9ca0b0 */
+    --text: #2c2e3e;
+    /* was #4c4f69 — near-black body text */
+    --subtext1: #3c3f4f;
+    /* was #5c5f77 */
+    --subtext0: #4a4d5d;
+    /* was #6c6f85 */
+    --mauve: #6f1ddb;
+    /* was #8839ef */
+    --red: #b80931;
+    /* was #d20f39 */
+    --peach: #d94a00;
+    /* was #fe640b */
+    --yellow: #a16500;
+    /* was #df8e1d */
+    --green: #2e7a1e;
+    /* was #40a02b */
+    --teal: #0e7a7f;
+    /* was #179299 */
+    --blue: #0f4ed4;
+    /* was #1e66f5 */
+    --lavender: #5868e0;
+    /* was #7287fd */
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: var(--base);
+  color: var(--text);
+  font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+  font-size: 16px;
+  line-height: 1.6;
+  scrollbar-color: var(--surface1) var(--mantle);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+main {
+  flex: 1;
+  width: 100%;
+  max-width: var(--content-width);
+  margin: 0 auto;
+  padding: 1rem var(--pad-x) 4rem;
+}
+
+a {
+  color: var(--blue);
+  text-decoration: underline;
+  text-decoration-color: var(--surface2);
+  text-underline-offset: 2px;
+  transition: color 120ms ease, text-decoration-color 120ms ease;
+}
+
+a:hover {
+  color: var(--lavender);
+  text-decoration-color: var(--lavender);
+}
+
+a:focus-visible {
+  outline: 2px dashed var(--mauve);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: var(--mauve);
+  line-height: 1.25;
+  margin-bottom: 1rem;
+}
+
+h1 {
+  font-size: 1.5rem;
+  margin-top: 2rem;
+}
+
+h2 {
+  font-size: 1.25rem;
+  color: var(--peach);
+  margin-top: 3.25rem;
+}
+
+h3 {
+  font-size: 1.1rem;
+  color: var(--yellow);
+  margin-top: 2.5rem;
+}
+
+h4 {
+  margin-top: 2rem;
+}
+
+p,
+ul,
+ol,
+blockquote,
+pre,
+table {
+  margin: 1.25rem 0;
+}
+
+code {
+  background: var(--mantle);
+  padding: 0.1em 0.4em;
+  border-radius: 3px;
+  font-size: 0.95em;
+}
+
+pre {
+  background: var(--mantle);
+  padding: 1rem;
+  border-radius: 6px;
+  border: 1px solid var(--surface0);
+  overflow-x: auto;
+  font-size: 0.9rem;
+}
+
+pre code {
+  background: transparent;
+  padding: 0;
+}
+
+blockquote {
+  border-left: 2px solid var(--mauve);
+  padding-left: 1rem;
+  color: var(--subtext0);
+  font-style: italic;
+}
+
+hr {
+  border: none;
+  border-top: 1px dashed var(--surface1);
+  margin: 2rem 0;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+th,
+td {
+  border: 1px solid var(--surface0);
+  padding: 0.4rem 0.7rem;
+  text-align: left;
+}
+
+th {
+  background: var(--mantle);
+  color: var(--peach);
+}
+
+details {
+  background: var(--mantle);
+  border: 1px solid var(--surface0);
+  border-radius: 4px;
+  padding: 0.5rem 1rem;
+  margin: 1.5rem 0;
+}
+
+details summary {
+  cursor: pointer;
+  color: var(--yellow);
+  font-weight: 700;
+}
+
+details[open] summary {
+  margin-bottom: 0.5rem;
+  border-bottom: 1px dashed var(--surface1);
+  padding-bottom: 0.5rem;
+}
+
+::selection {
+  background: var(--surface2);
+  color: var(--text);
+}
+
+/* terminal banner / preformatted ASCII */
+.ascii {
+  white-space: pre;
+  font-size: clamp(0.55rem, 1.6vw, 0.8rem);
+  line-height: 1.1;
+  color: var(--mauve);
+  overflow-x: auto;
+}
+
+/* prompt component */
+.prompt {
+  color: var(--green);
+}
+
+.prompt .at {
+  color: var(--lavender);
+}
+
+.prompt .path {
+  color: var(--blue);
+}
+
+.prompt .sigil {
+  color: var(--peach);
+}
+
+.cursor {
+  display: inline-block;
+  width: 0.6ch;
+  background: var(--text);
+  animation: blink 1s steps(2, start) infinite;
+  vertical-align: baseline;
+}
+
+@keyframes blink {
+  to {
+    visibility: hidden;
+  }
+}
+
+/* typewriter — animates command width 0 → N ch via CSS vars */
+.cmd.typing {
+  display: inline-block;
+  overflow: hidden;
+  white-space: pre;
+  vertical-align: bottom;
+  width: 0;
+  animation: typewriter var(--type-duration, 0.8s) steps(var(--type-chars, 10), end) 0.25s both;
+}
+
+@keyframes typewriter {
+  to {
+    width: calc(var(--type-chars, 10) * 1ch);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cursor {
+    animation: none;
+  }
+
+  .cmd.typing {
+    animation: none;
+    width: auto;
+  }
+}
+
+/* heading anchor links from rehype-autolink-headings */
+.anchor {
+  margin-left: 0.5rem;
+  color: var(--surface2);
+  text-decoration: none;
+  font-weight: 400;
+  opacity: 0;
+  transition: opacity 120ms, color 120ms;
+}
+
+h1:hover .anchor,
+h2:hover .anchor,
+h3:hover .anchor,
+h4:hover .anchor,
+.anchor:focus-visible {
+  opacity: 1;
+}
+
+.anchor:hover {
+  color: var(--peach);
+}
+
+:target {
+  scroll-margin-top: 1rem;
+}
+
+:target>.anchor {
+  opacity: 1;
+  color: var(--peach);
+}
+
+/* code-block copy button */
+pre:not(.ascii) {
+  position: relative;
+}
+
+.copy-btn {
+  position: absolute;
+  top: 0.4rem;
+  right: 0.4rem;
+  background: var(--surface0);
+  color: var(--subtext0);
+  border: 1px solid var(--surface1);
+  border-radius: 3px;
+  padding: 0.1rem 0.45rem;
+  font: inherit;
+  font-size: 0.72rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: opacity 120ms, color 120ms, border-color 120ms;
+}
+
+pre:hover .copy-btn,
+.copy-btn:focus-visible {
+  opacity: 1;
+}
+
+.copy-btn:hover {
+  color: var(--peach);
+  border-color: var(--peach);
+}
+
+.copy-btn[data-state="copied"] {
+  color: var(--green);
+  border-color: var(--green);
+  opacity: 1;
+}
+
+.copy-btn[data-state="failed"] {
+  color: var(--red);
+  border-color: var(--red);
+  opacity: 1;
+}
+
+@media (hover: none) {
+  .copy-btn {
+    opacity: 0.7;
+  }
+}
+
+/* download badge (used on /cv) */
+.download-badge {
+  display: inline-block;
+  padding: 0.3rem 0.7rem;
+  border: 1px solid var(--surface2);
+  border-radius: 4px;
+  text-decoration: none;
+  color: var(--text);
+  background: var(--mantle);
+  font-size: 0.85rem;
+}
+
+.download-badge:hover {
+  color: var(--peach);
+  border-color: var(--peach);
+}
+
+/* nav */
+nav.topbar {
+  border-bottom: 1px dashed var(--surface1);
+  padding: 0.75rem var(--pad-x);
+  background: var(--mantle);
+}
+
+nav.topbar .row {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1rem;
+  align-items: baseline;
+}
+
+nav.topbar a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+nav.topbar a:hover {
+  color: var(--peach);
+}
+
+nav.topbar a[aria-current='page'] {
+  color: var(--peach);
+}
+
+nav.topbar .label {
+  color: var(--overlay0);
+}
+
+footer.bottom {
+  border-top: 1px dashed var(--surface1);
+  padding: 1rem var(--pad-x);
+  background: var(--mantle);
+  color: var(--subtext0);
+  font-size: 0.85rem;
+}
+
+footer.bottom .row {
+  max-width: var(--content-width);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem 1.5rem;
+  justify-content: space-between;
+}
+
+/* box frame component */
+.frame {
+  border: 1px solid var(--surface1);
+  border-radius: 4px;
+  padding: 0.75rem 1rem;
+  background: var(--mantle);
+  position: relative;
+}
+
+.frame>.frame-title {
+  position: absolute;
+  top: -0.7rem;
+  left: 0.75rem;
+  background: var(--base);
+  padding: 0 0.5rem;
+  color: var(--peach);
+  font-size: 0.8rem;
+}
+
+/* tag chip */
+.tag {
+  display: inline-block;
+  padding: 0 0.4rem;
+  border: 1px solid var(--surface2);
+  border-radius: 3px;
+  color: var(--subtext1);
+  font-size: 0.8rem;
+  text-decoration: none;
+  background: var(--mantle);
+}
+
+.tag:hover {
+  color: var(--peach);
+  border-color: var(--peach);
+}
+
+.tag-list {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+}
+
+/* post card */
+.post-card {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  gap: 0.4rem 1rem;
+  padding: 0.6rem 0;
+  border-bottom: 1px dashed var(--surface0);
+  align-items: baseline;
+}
+
+.post-card .date {
+  color: var(--overlay0);
+  font-size: 0.85rem;
+  white-space: nowrap;
+}
+
+.post-card .title {
+  font-weight: 700;
+}
+
+.post-card .meta {
+  grid-column: 2;
+  color: var(--subtext0);
+  font-size: 0.85rem;
+}
+
+.post-card a {
+  color: var(--text);
+  text-decoration: none;
+}
+
+.post-card a:hover {
+  color: var(--peach);
+}
+
+/* misc */
+.muted {
+  color: var(--subtext0);
+}
+
+.warn {
+  color: var(--yellow);
+}
+
+.danger {
+  color: var(--red);
+}
+
+.ok {
+  color: var(--green);
+}

@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import Prompt from '../components/Prompt.astro';
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<Base title="404 — not found" description="404 not found.">
+  <pre class="ascii" style="color: var(--red)">{String.raw`
+  _  _    ___  _  _
+ | || |  / _ \| || |
+ | || |_| | | | || |_
+ |__   _| | | |__   _|
+    | | | |_| |  | |
+    |_|  \___/   |_|
+`}</pre>
+
+  <p><Prompt path="~" command={`open ${Astro.url.pathname}`} cursor /></p>
+
+  <p class="danger">bash: cannot open '<code>{Astro.url.pathname}</code>': No such file or directory</p>
+
+  <p>
+    &rarr; <a href={`${base}/`}>cd ~</a>
+    &middot; <a href={`${base}/posts`}>cd posts/</a>
+  </p>
+</Base>

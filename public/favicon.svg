@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64">
+  <rect width="64" height="64" rx="10" fill="#1e1e2e"/>
+  <text x="50%" y="58%" text-anchor="middle"
+        font-family="ui-monospace, monospace" font-weight="700" font-size="36"
+        fill="#cba6f7">$_</text>
+</svg>

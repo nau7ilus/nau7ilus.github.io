@@ -1,0 +1,32 @@
+---
+import TagChip from "./TagChip.astro";
+
+interface Props {
+  href: string;
+  title: string;
+  date: Date;
+  description?: string;
+  category?: string;
+  tags?: string[];
+}
+const { href, title, date, description, category, tags = [] } = Astro.props;
+const iso = date.toISOString().slice(0, 10);
+---
+
+<article class="post-card">
+  <span class="date"><time datetime={iso}>{iso}</time></span>
+  <span class="title"><a href={href}>{title}</a></span>
+  <span class="meta">
+    {category && <span class="muted">[{category}]</span>}
+    {description && <> &middot; {description}</>}
+    {
+      tags.length > 0 && (
+        <span class="tag-list" style="margin-left:0.5rem">
+          {tags.map((t) => (
+            <TagChip tag={t} />
+          ))}
+        </span>
+      )
+    }
+  </span>
+</article>

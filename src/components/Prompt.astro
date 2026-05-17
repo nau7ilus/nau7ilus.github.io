@@ -1,0 +1,39 @@
+---
+interface Props {
+  user?: string;
+  host?: string;
+  path?: string;
+  cursor?: boolean;
+  command?: string;
+  /** Apply CSS typewriter animation to the command string. */
+  typing?: boolean;
+}
+const {
+  user = "nau7ilus",
+  host = "blog",
+  path = "~",
+  cursor = false,
+  command,
+  typing = false,
+} = Astro.props;
+
+const cmdLength = command ? command.length + 1 : 0; // +1 for the leading space
+const typeStyle = typing
+  ? `--type-chars: ${cmdLength}; --type-duration: ${Math.max(0.4, cmdLength * 0.07)}s`
+  : undefined;
+---
+
+<span class="prompt">
+  <span class="user">{user}</span><span class="at">@</span><span class="host"
+    >{host}</span
+  >:<span class="path">{path}</span><span class="sigil">$</span>
+  {
+    command && (
+      <span class:list={["cmd", { typing }]} style={typeStyle}>
+        {" "}
+        {command}
+      </span>
+    )
+  }
+  {cursor && <span class="cursor">&nbsp;</span>}
+</span>

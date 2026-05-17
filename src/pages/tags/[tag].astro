@@ -1,0 +1,44 @@
+---
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import Prompt from '../../components/Prompt.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  const tagSet = new Set<string>();
+  for (const p of posts) for (const t of p.data.tags) tagSet.add(t);
+  return [...tagSet].map((tag) => ({
+    params: { tag },
+    props: {
+      tag,
+      posts: posts
+        .filter((p) => p.data.tags.includes(tag))
+        .sort((a, b) => b.data.date.getTime() - a.data.date.getTime()),
+    },
+  }));
+}
+
+interface Props {
+  tag: string;
+  posts: Awaited<ReturnType<typeof getCollection<'posts'>>>;
+}
+const { tag, posts } = Astro.props;
+const base = import.meta.env.BASE_URL.replace(/\/$/, '');
+---
+<Base title={`#${tag}`} description={`Posts tagged ${tag}`}>
+  <p><Prompt path="~/posts" command={`grep -l '${tag}' *.md`} /></p>
+  <h1>tag: #{tag}</h1>
+  <p class="muted">{posts.length} post{posts.length === 1 ? '' : 's'}</p>
+  {posts.map((p) => (
+    <PostCard
+      href={`${base}/posts/${p.id}`}
+      title={p.data.title}
+      date={p.data.date}
+      description={p.data.description}
+      category={p.data.category}
+      tags={p.data.tags}
+    />
+  ))}
+  <p style="margin-top:2rem">&larr; <a href={`${base}/posts`}>back to all posts</a></p>
+</Base>

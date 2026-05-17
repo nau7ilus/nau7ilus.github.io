@@ -1,0 +1,30 @@
+---
+import { getCollection, render } from 'astro:content';
+import Post from '../../layouts/Post.astro';
+import { gitLastModified, postSourcePath } from '../../lib/git';
+
+export async function getStaticPaths() {
+  const posts = await getCollection('posts', ({ data }) => !data.draft);
+  return posts.map((post) => ({
+    params: { slug: post.id },
+    props: { post },
+  }));
+}
+
+const { post } = Astro.props;
+const { Content } = await render(post);
+const updated =
+  gitLastModified(postSourcePath(post.id)) ?? post.data.updated ?? undefined;
+---
+<Post
+  title={post.data.title}
+  description={post.data.description}
+  date={post.data.date}
+  updated={updated}
+  category={post.data.category}
+  tags={post.data.tags}
+  disclosure={post.data.disclosure}
+  slug={post.id}
+>
+  <Content />
+</Post>

@@ -1,0 +1,11 @@
+---
+interface Props {
+  tag: string;
+  href?: string;
+}
+const { tag, href } = Astro.props;
+const url =
+  href ?? `${import.meta.env.BASE_URL}tags/${tag}`.replace(/\/+/g, "/");
+---
+
+<a class="tag" href={url}>#{tag}</a>
