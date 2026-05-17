@@ -8,14 +8,32 @@ interface Props {
   description?: string;
   category?: string;
   tags?: string[];
+  lesenswert?: boolean;
 }
-const { href, title, date, description, category, tags = [] } = Astro.props;
+const {
+  href,
+  title,
+  date,
+  description,
+  category,
+  tags = [],
+  lesenswert = false,
+} = Astro.props;
 const iso = date.toISOString().slice(0, 10);
 ---
 
 <article class="post-card">
   <span class="date"><time datetime={iso}>{iso}</time></span>
-  <span class="title"><a href={href}>{title}</a></span>
+  <span class="title">
+    <a href={href}>{title}</a>
+    {
+      lesenswert && (
+        <span class="badge-lesenswert" title="lesenswert">
+          <span aria-hidden="true">★</span> lesenswert
+        </span>
+      )
+    }
+  </span>
   <span class="meta">
     {category && <span class="muted">[{category}]</span>}
     {description && <> &middot; {description}</>}

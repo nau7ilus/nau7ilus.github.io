@@ -11,6 +11,7 @@ const posts = defineCollection({
     category: z.enum(['ctf', 'bug-bounty', 'project', 'writeup', 'misc']),
     tags: z.array(z.string()).default([]),
     draft: z.boolean().default(false),
+    lesenswert: z.boolean().default(false),
     disclosure: z.enum(['public', 'permission-granted', 'redacted']).optional(),
   }),
 });

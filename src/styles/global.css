@@ -542,6 +542,26 @@ footer.bottom .row {
   color: var(--peach);
 }
 
+/* lesenswert badge — gold chip with star */
+.badge-lesenswert {
+  display: inline-block;
+  margin-left: 0.5rem;
+  padding: 0 0.4rem;
+  border: 1px solid var(--yellow);
+  border-radius: 3px;
+  color: var(--yellow);
+  background: color-mix(in srgb, var(--yellow) 12%, transparent);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  vertical-align: middle;
+  white-space: nowrap;
+}
+
+h1 .badge-lesenswert {
+  font-size: 0.85rem;
+}
+
 /* misc */
 .muted {
   color: var(--subtext0);

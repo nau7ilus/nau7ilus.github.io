@@ -38,6 +38,7 @@ const base = import.meta.env.BASE_URL.replace(/\/$/, '');
       description={p.data.description}
       category={p.data.category}
       tags={p.data.tags}
+      lesenswert={p.data.lesenswert}
     />
   ))}
   <p style="margin-top:2rem">&larr; <a href={`${base}/posts`}>back to all posts</a></p>

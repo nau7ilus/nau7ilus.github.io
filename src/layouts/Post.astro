@@ -11,11 +11,21 @@ interface Props {
   category: string;
   tags: string[];
   disclosure?: "public" | "permission-granted" | "redacted";
+  lesenswert?: boolean;
   /** Post id, used to build the per-post OG image URL. */
   slug: string;
 }
-const { title, description, date, updated, category, tags, disclosure, slug } =
-  Astro.props;
+const {
+  title,
+  description,
+  date,
+  updated,
+  category,
+  tags,
+  disclosure,
+  lesenswert = false,
+  slug,
+} = Astro.props;
 const iso = date.toISOString().slice(0, 10);
 const updatedIso = updated?.toISOString().slice(0, 10);
 
@@ -57,7 +67,16 @@ const ldJson = {
           )
         }
       </p>
-      <h1 style="margin-top:0.25rem">{title}</h1>
+      <h1 style="margin-top:0.25rem">
+        {title}
+        {
+          lesenswert && (
+            <span class="badge-lesenswert" title="lesenswert">
+              <span aria-hidden="true">★</span> lesenswert
+            </span>
+          )
+        }
+      </h1>
       <p class="muted">{description}</p>
       {
         tags.length > 0 && (

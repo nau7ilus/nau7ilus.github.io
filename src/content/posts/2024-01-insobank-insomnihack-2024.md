@@ -5,6 +5,7 @@ date: 2024-01-22
 category: ctf
 tags: [web, race-condition, sql, decimal, ctf]
 disclosure: public
+lesenswert: true
 ---
 
 > **Event:** [Insomni'hack Teaser 2024](https://ctftime.org/event/2139/) &middot; **Kategorie:** Web &middot; **Challenge:** InsoBank &middot; **Punkte:** 333 &middot; **Solver:** ich (solo)
