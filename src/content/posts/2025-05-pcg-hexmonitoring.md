@@ -1,7 +1,7 @@
 ---
 title: "PCG 2025: Hexmonitoring — Client-Cert-Theft in einer Flutter-App"
 description: "Drei Flags aus einer mTLS-geschützten Flutter-App: Cert-Extraktion aus dem APK, Frida-basierter TLS-Bypass und IPTables-Redirect für Burp."
-date: 2026-05-04
+date: 2025-05-04
 category: ctf
 tags: [mobile, flutter, android, mtls, frida, burp, ctf]
 disclosure: public
