@@ -226,6 +226,21 @@ th {
   color: var(--peach);
 }
 
+@media (max-width: 640px) {
+  table {
+    display: block;
+    overflow-x: auto;
+    max-width: 100%;
+    -webkit-overflow-scrolling: touch;
+    font-size: 0.85rem;
+  }
+
+  th,
+  td {
+    padding: 0.3rem 0.5rem;
+  }
+}
+
 details {
   background: var(--mantle);
   border: 1px solid var(--surface0);
