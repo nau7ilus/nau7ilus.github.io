@@ -6,7 +6,7 @@ export async function GET(context) {
     (a, b) => b.data.date.getTime() - a.data.date.getTime(),
   );
   return rss({
-    title: 'nau7ilus // cybersec notebook',
+    title: 'Filip Zielinski // nau7ilus // cybersec notebook',
     description: 'CTF writeups, bug bounty notes and side-projects.',
     site: context.site,
     items: posts.map((p) => ({

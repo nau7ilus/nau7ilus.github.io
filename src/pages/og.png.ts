@@ -25,7 +25,7 @@ const C = {
   peach: '#fab387',
 } as const;
 
-const TITLE = 'nau7ilus // cybersec notebook';
+const TITLE = 'Filip Zielinski // cybersec notebook';
 const TAGLINE = 'CTF writeups, bug bounty notes and side-projects';
 const SECTIONS = ['posts', 'projects', 'cv'];
 
